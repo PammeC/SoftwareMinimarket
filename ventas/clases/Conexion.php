@@ -1,21 +1,17 @@
 <?php
-class contectar{
+class conectar{
     private $servidor="localhost";
     private $usuario="root";
-    private $contraseña="";
-    private $bd="BD_compraventa";
+    private $password="1723372148";
+    private $bd="ventascompras";
 
     public function conexion(){
         $conexion=mysqli_connect($this->servidor,
         $this->usuario,
-        $this->contraseña,
-        $this->bd;)
+        $this->password,
+        $this->bd);
 
         return $conexion;
     }
-}
-
-$obj=new conectar
-var_dump($obj->conexion)
-
+} 
 ?>
