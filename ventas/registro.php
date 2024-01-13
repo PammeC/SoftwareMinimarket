@@ -42,7 +42,7 @@
 							<input type="text" class="form-control input-sm" name="password" id="password">
 							<p></p>
 							<span class="btn btn-primary" id="registro">Registrar</span>
-							<a href="index.php" class="btn btn-default">Regresar login</a>
+							<a href="index.php" class="btn btn-danger btn-sm">Regresar login</a>
 						</form>
 					</div>
 				</div>
