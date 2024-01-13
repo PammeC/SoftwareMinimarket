@@ -54,6 +54,16 @@ create table clientes(
 				primary key(id_cliente)
 					);
 
+CREATE TABLE proveedores (
+				id_proveedor INT AUTO_INCREMENT,
+				id_usuario INT NOT NULL,
+				nombre_empresa VARCHAR(200),
+				direccion_empresa VARCHAR(200),
+				email_empresa VARCHAR(200),
+				telefono_empresa VARCHAR(200),
+				primary key(id_proveedor)
+			); 			
+
 create table ventas(
 				id_venta int not null,
 				id_cliente int,

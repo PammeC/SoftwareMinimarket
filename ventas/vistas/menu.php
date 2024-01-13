@@ -38,18 +38,24 @@
           </li>
 
 
-        <?php
+   <!-- para que solo pueda ingresar el usuario admin -->
+   <!-- <?php
         if($_SESSION['usuario']=="admin"):
          ?>
            <li><a href="usuarios.php"><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a>
             </li>
          <?php 
        endif;
-          ?>
+          ?> -->
 
 
            <li><a href="clientes.php"><span class="glyphicon glyphicon-user"></span> Clientes</a>
           </li>
+
+          <li><a href="proveedores.php"><span class="glyphicon glyphicon-user"></span> Proveedores</a>
+          </li>
+
+          
           <li><a href="ventas.php"><span class="glyphicon glyphicon-usd"></span> Vender Articulo</a>
           </li>
           
