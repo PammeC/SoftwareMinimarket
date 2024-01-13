@@ -1,6 +1,7 @@
 <?php 
 	session_start();
-	if(isset($_SESSION['usuario'])){		
+	if(isset($_SESSION['usuario'])){
+		
  ?>
 
 
@@ -8,7 +9,7 @@
 <html>
 <head>
 	<title>inicio</title>
-	
+	<?php require_once "menu.php"; ?>
 </head>
 <body>
 
@@ -19,5 +20,4 @@
 	}else{
 		header("location:../index.php");
 	}
-    
  ?>
