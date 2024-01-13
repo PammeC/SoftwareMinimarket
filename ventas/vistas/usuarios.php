@@ -14,7 +14,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmRegistro">
-						<label>Nombre</label>
+					<label>Nombre</label>
 						<input type="text" class="form-control input-sm" name="nombre" id="nombre">
 						<label>Apellido</label>
 						<input type="text" class="form-control input-sm" name="apellido" id="apellido">
@@ -109,7 +109,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 
 	</script>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function(){
 			$('#btnActualizaUsuario').click(function(){
 
