@@ -69,7 +69,7 @@ if(isset($_SESSION['usuario'])){
 				vacios=validarFormVacio('frmCategorias');
 
 				if(vacios > 0){
-					alertify.alert("Debes llenar todos los campos!!");
+					alertify.alert("Debes llenar todos los campos!");
 					return false;
 				}
 
@@ -84,7 +84,7 @@ if(isset($_SESSION['usuario'])){
 					$('#frmCategorias')[0].reset();
 
 					$('#tablaCategoriaLoad').load("categorias/tablaCategorias.php");
-					alertify.success("Categoria agregada con exito :D");
+					alertify.success("Categoria agregada con exito!");
 				}else{
 					alertify.error("No se pudo agregar categoria");
 				}
@@ -106,9 +106,9 @@ if(isset($_SESSION['usuario'])){
 					success:function(r){
 						if(r==1){
 							$('#tablaCategoriaLoad').load("categorias/tablaCategorias.php");
-							alertify.success("Actualizado con exito :)");
+							alertify.success("Actualizado con exito!");
 						}else{
-							alertify.error("no se pudo actaulizar :(");
+							alertify.error("No se pudo actaulizar");
 						}
 					}
 				});
