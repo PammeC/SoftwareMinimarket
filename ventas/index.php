@@ -31,7 +31,7 @@
 					<div class="panel panel-heading">Sistema de ventas y compra</div>
 					<div class="panel panel-body">
 						<p>
-							<img src="img/logo_trial.png"  height="190">
+							<img src="img/logo.png"  height="190">
 						</p>
 						<form id="frmLogin">
 							<label>Usuario</label>
