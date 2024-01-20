@@ -88,16 +88,16 @@ CREATE TABLE ventas (
 
 
 CREATE TABLE compras (
-				id_compra INT AUTO_INCREMENT,
-				id_proveedor INT NOT NULL,
-				id_producto INT NOT NULL,
-				id_usuario INT NOT NULL,
-				cantidad INT,
-				descripcion VARCHAR(200),
-				precio_total FLOAT,
-				fechaCompra DATE,
-				PRIMARY KEY (id_compra),
-				FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor),
-				FOREIGN KEY (id_producto) REFERENCES articulos(id_producto),
-				FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    id_compra INT AUTO_INCREMENT,
+    id_proveedor INT NOT NULL,
+    id_producto INT NOT NULL,
+    id_usuario INT NOT NULL,
+    cantidad INT,
+    descripcion VARCHAR(200),
+    precio_total FLOAT,
+    fechaCompra DATE,
+    PRIMARY KEY (id_compra),
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor),
+    FOREIGN KEY (id_producto) REFERENCES articulos(id_producto),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
