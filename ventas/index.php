@@ -28,10 +28,10 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
-					<div class="panel panel-heading">Sistema de ventas y compra</div>
+					<div class="panel panel-heading">Sistema de ventas y almacen</div>
 					<div class="panel panel-body">
 						<p>
-							<img src="img/logo.png"  height="190">
+							<img src="img/ventas.jpg"  height="190">
 						</p>
 						<form id="frmLogin">
 							<label>Usuario</label>
@@ -40,11 +40,9 @@
 							<input type="password" name="password" id="password" class="form-control input-sm">
 							<p></p>
 							<span class="btn btn-primary btn-sm" id="entrarSistema">Entrar</span>
-							
-						
+							<?php  if(!$validar): ?>
 							<a href="registro.php" class="btn btn-danger btn-sm">Registrar</a>
-							
-							
+							<?php endif; ?>
 						</form>
 					</div>
 				</div>
@@ -76,10 +74,10 @@
 				if(r==1){
 					window.location="vistas/inicio.php";
 				}else{
-					alert("No se pudo acceder");
+					alert("No se pudo acceder :(");
 				}
 			}
 		});
 	});
-	});	
+	});
 </script>

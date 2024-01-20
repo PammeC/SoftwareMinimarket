@@ -8,7 +8,7 @@
 <html>
 <head>
 	<title>inicio</title>
-	
+	<?php require_once "menu.php"; ?>
 </head>
 <body>
 

@@ -2,7 +2,7 @@
 class conectar{
     private $servidor="localhost";
     private $usuario="root";
-    private $password="root";
+    private $password="1234";
     private $bd="ventas";
 
     public function conexion(){

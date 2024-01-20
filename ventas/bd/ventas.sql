@@ -1,76 +1,103 @@
-CREATE SCHEMA `ventas` DEFAULT CHARACTER SET utf8mb4 ;
+CREATE SCHEMA `ventas` DEFAULT CHARACTER SET utf8mb4;
 
-use ventas;
+USE ventas;
 
-create table usuarios(
-				id_usuario int auto_increment,
-				nombre varchar(50),
-				apellido varchar(50),
-				email varchar(50),
-				password text(50),
-				fechaCaptura date,
-				primary key(id_usuario)
-					);
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    email VARCHAR(50),
+    password TEXT(50),
+    fechaCaptura DATE,
+    PRIMARY KEY (id_usuario)
+);
 
-create table categorias (
-				id_categoria int auto_increment,
-				id_usuario int not null,
-				nombreCategoria varchar(150),
-				fechaCaptura date,
-				primary key(id_categoria)
-						);
+CREATE TABLE categorias (
+    id_categoria INT AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    nombreCategoria VARCHAR(150),
+    fechaCaptura DATE,
+    PRIMARY KEY (id_categoria),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
 
-create table imagenes(
-				id_imagen int auto_increment,
-				id_categoria int not null,
-				nombre varchar(500),
-				ruta varchar(500),
-				fechaSubida date,
-				primary key(id_imagen)
-					);
+CREATE TABLE imagenes (
+    id_imagen INT AUTO_INCREMENT,
+    id_categoria INT NOT NULL,
+    nombre VARCHAR(500),
+    ruta VARCHAR(500),
+    fechaSubida DATE,
+    PRIMARY KEY (id_imagen),
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
+);
 
-create table articulos(
-				id_producto int auto_increment,
-				id_categoria int not null,
-				id_imagen int not null,
-				id_usuario int not null,
-				nombre varchar(50),
-				descripcion varchar(500),
-				cantidad int,
-				precio float,
-				fechaCaptura date,
-				primary key(id_producto)
-						);
+CREATE TABLE articulos (
+    id_producto INT AUTO_INCREMENT,
+    id_categoria INT NOT NULL,
+    id_imagen INT NOT NULL,
+    id_usuario INT NOT NULL,
+    nombre VARCHAR(50),
+    descripcion VARCHAR(500),
+    cantidad INT,
+    precio FLOAT,
+    fechaCaptura DATE,
+    PRIMARY KEY (id_producto),
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
+    FOREIGN KEY (id_imagen) REFERENCES imagenes(id_imagen),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
 
-create table clientes(
-				id_cliente int auto_increment,
-				id_usuario int not null,
-				nombre varchar(200),
-				apellido varchar(200),
-				direccion varchar(200),
-				email varchar(200),
-				telefono varchar(200),
-				rfc varchar(200),
-				primary key(id_cliente)
-					);
+CREATE TABLE clientes (
+    id_cliente INT AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    nombre VARCHAR(200),
+    apellido VARCHAR(200),
+    direccion VARCHAR(200),
+    email VARCHAR(200),
+    telefono VARCHAR(200),
+    rfc VARCHAR(200),
+    PRIMARY KEY (id_cliente),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
 
 CREATE TABLE proveedores (
-				id_proveedor INT AUTO_INCREMENT,
-				id_usuario INT NOT NULL,
-				nombre_empresa VARCHAR(200),
-				direccion_empresa VARCHAR(200),
-				email_empresa VARCHAR(200),
-				telefono_empresa VARCHAR(200),
-				primary key(id_proveedor)
-					); 	
+    id_proveedor INT AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    nombre_empresa VARCHAR(200),
+    direccion_empresa VARCHAR(200),
+    email_empresa VARCHAR(200),
+    telefono_empresa VARCHAR(200),
+    PRIMARY KEY (id_proveedor),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
 
-create table ventas(
-				id_venta int not null,
-				id_cliente int,
-				id_producto int,
-				id_usuario int,
-				cantidad int,
-                descripcion varchar (200),
-				precio float,
-				fechaCompra date
-					);
+CREATE TABLE ventas (
+    id_venta INT AUTO_INCREMENT,
+    id_cliente INT,
+    id_producto INT,
+    id_usuario INT,
+    cantidad INT,
+    descripcion VARCHAR(200),
+    precio FLOAT,
+    fechaCompra DATE,
+    PRIMARY KEY (id_venta),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
+    FOREIGN KEY (id_producto) REFERENCES articulos(id_producto),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+
+CREATE TABLE compras (
+				id_compra INT AUTO_INCREMENT,
+				id_proveedor INT NOT NULL,
+				id_producto INT NOT NULL,
+				id_usuario INT NOT NULL,
+				cantidad INT,
+				descripcion VARCHAR(200),
+				precio_total FLOAT,
+				fechaCompra DATE,
+				PRIMARY KEY (id_compra),
+				FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor),
+				FOREIGN KEY (id_producto) REFERENCES articulos(id_producto),
+				FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
