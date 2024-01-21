@@ -74,7 +74,7 @@
 				if(r==1){
 					window.location="vistas/inicio.php";
 				}else{
-					alert("No se pudo acceder :(");
+					alert("No se pudo acceder ");
 				}
 			}
 		});
