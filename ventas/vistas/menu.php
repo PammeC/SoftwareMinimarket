@@ -35,15 +35,25 @@
             <ul class="dropdown-menu">
                        <li><a href="categorias.php">Categorias</a></li>
               <li><a href="articulos.php">Articulos</a></li>
-   </ul>
+            </ul>
           </li>
+        </li>
+        
           
           
           <?php
         if($_SESSION['usuario']=="admin"):
          ?>
-           <li><a href="usuarios.php"><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a>
-            </li>
+         
+           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Administrar Personas <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="usuarios.php">Usuarios</a></li>
+              <li><a href="clientes.php">Clientes</a></li>
+              <li><a href="proveedores.php">Proveedores</a></li>
+            </ul>
+          </li>
+
          <?php 
        endif;
           ?> 
