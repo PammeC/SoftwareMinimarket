@@ -27,9 +27,9 @@
 
             <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span> Inicio</a>
             </li>
-
-            
           </li>
+          
+          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Administrar Articulos <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -59,10 +59,18 @@
           ?> 
 
 
-           <!-- <li><a href="clientes.php"><span class="glyphicon glyphicon-user"></span> Clientes</a>
+          <!-- <li><a href="ventas.php"><span class="glyphicon glyphicon-usd"></span> Vender Articulo</a>
+          </li>  -->
+ 
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Transacción <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                       <li><a href="ventas.php">Vender Producto</a></li>
+              <li><a href="compras.php">Comprar Producto</a></li>
+            </ul>
           </li>
-          <li><a href="ventas.php"><span class="glyphicon glyphicon-usd"></span> Vender Articulo</a>
-          </li> -->
+        </li>
           
           <li class="dropdown" >
             <a href="#" style="color: red"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['usuario']; ?>  <span class="caret"></span></a>
