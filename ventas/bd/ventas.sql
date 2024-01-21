@@ -52,10 +52,11 @@ CREATE TABLE clientes (
     id_usuario INT NOT NULL,
     nombre VARCHAR(200),
     apellido VARCHAR(200),
+    cedula INT (10),
     direccion VARCHAR(200),
     email VARCHAR(200),
     telefono VARCHAR(200),
-    rfc VARCHAR(200),
+    
     PRIMARY KEY (id_cliente),
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
