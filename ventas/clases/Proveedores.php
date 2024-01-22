@@ -30,7 +30,12 @@
 							direccion_empresa,
 							email_empresa,
 							telefono_empresa
-				from proveedores";
+				from proveedores
+				where id_proveedor='$idproveedor'";
+
+
+
+
 			$result=mysqli_query($conexion,$sql);
 			$ver=mysqli_fetch_row($result);
 

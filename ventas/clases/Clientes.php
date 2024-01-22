@@ -38,7 +38,9 @@
 							email,
 							telefono
 							
-				from clientes";
+				from clientes
+				where id_cliente='$idcliente'";
+				
 			$result=mysqli_query($conexion,$sql);
 			$ver=mysqli_fetch_row($result);
 

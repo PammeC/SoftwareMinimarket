@@ -97,7 +97,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 							$('#tablaUsuariosLoad').load('usuarios/tablaUsuarios.php');
 							alertify.success("Eliminado con exito!!");
 						}else{
-							alertify.error("No se pudo eliminar :(");
+							alertify.error("No se pudo eliminar");
 						}
 					}
 				});
@@ -122,9 +122,9 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 
 						if(r==1){
 							$('#tablaUsuariosLoad').load('usuarios/tablaUsuarios.php');
-							alertify.success("Actualizado con exito :D");
+							alertify.success("Actualizado con exito ");
 						}else{
-							alertify.error("No se pudo actualizar :(");
+							alertify.error("No se pudo actualizar ");
 						}
 					}
 				});
@@ -159,7 +159,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 							$('#tablaUsuariosLoad').load('usuarios/tablaUsuarios.php');
 							alertify.success("Agregado con exito");
 						}else{
-							alertify.error("Fallo al agregar :(");
+							alertify.error("Fallo al agregar");
 						}
 					}
 				});

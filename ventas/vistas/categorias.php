@@ -87,7 +87,7 @@ if(isset($_SESSION['usuario'])){
 					$('#frmCategorias')[0].reset();
 
 					$('#tablaCategoriaLoad').load("categorias/tablaCategorias.php");
-					alertify.success("Categoria agregada con exito :D");
+					alertify.success("Categoria agregada con exito");
 				}else{
 					alertify.error("No se pudo agregar categoria");
 				}
@@ -109,9 +109,9 @@ if(isset($_SESSION['usuario'])){
 					success:function(r){
 						if(r==1){
 							$('#tablaCategoriaLoad').load("categorias/tablaCategorias.php");
-							alertify.success("Actualizado con exito :)");
+							alertify.success("Actualizado con exito");
 						}else{
-							alertify.error("no se pudo actaulizar :(");
+							alertify.error("no se pudo actaulizar");
 						}
 					}
 				});
@@ -134,14 +134,14 @@ if(isset($_SESSION['usuario'])){
 					success:function(r){
 						if(r==1){
 							$('#tablaCategoriaLoad').load("categorias/tablaCategorias.php");
-							alertify.success("Eliminado con exito!!");
+							alertify.success("Eliminado con exito!");
 						}else{
-							alertify.error("No se pudo eliminar :(");
+							alertify.error("No se pudo eliminar");
 						}
 					}
 				});
 			}, function(){ 
-				alertify.error('Cancelo !')
+				alertify.error('Cancelo!')
 			});
 		}
 	</script>
