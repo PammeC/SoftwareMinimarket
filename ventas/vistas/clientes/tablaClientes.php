@@ -19,7 +19,7 @@
 
 <div class="table-responsive">
 	 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
-	 	<caption><label>Clientes :</label></caption>
+	 	<caption><label>Clientes</label></caption>
 	 	<tr>
 	 		<td>Nombre</td>
 	 		<td>Apellido</td>

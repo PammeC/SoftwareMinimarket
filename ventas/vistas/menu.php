@@ -37,9 +37,9 @@
                        <li><a href="articulos.php">Articulos</a></li>
             </ul>
           </li>
-          <li><a href="clientes.php"><span class="glyphicon glyphicon-user"></span> Clientes</a>
+          <!-- <li><a href="clientes.php"><span class="glyphicon glyphicon-user"></span> Clientes</a>
           </li>
-        </li>
+        </li> -->
         
           
           

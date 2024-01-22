@@ -10,8 +10,8 @@
 
 			$sql="INSERT into clientes (id_usuario,
 										nombre,
-										cedula,
 										apellido,
+										cedula,
 										direccion,
 										email,
 										telefono
@@ -32,8 +32,8 @@
 
 			$sql="SELECT id_cliente, 
 							nombre,
-							cedula,
 							apellido,
+							cedula,
 							direccion,
 							email,
 							telefono
@@ -60,10 +60,10 @@
 			$conexion=$c->conexion();
 			$sql="UPDATE clientes set nombre='$datos[1]',
 										apellido='$datos[2]',
-										cedula='$datos[6]',
-										direccion='$datos[3]',
-										email='$datos[4]',
-										telefono='$datos[5]'
+										cedula='$datos[3]',
+										direccion='$datos[4]',
+										email='$datos[5]',
+										telefono='$datos[6]'
 										 
 								where id_cliente='$datos[0]'";
 			return mysqli_query($conexion,$sql);
