@@ -81,3 +81,41 @@
 	});
 	});
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#entrarSistema').click(function(){
+            validarYEntrar();
+        });
+
+        $('#frmLogin').keypress(function(event) {
+            // Verifica si la tecla presionada es "Enter" (código 13)
+            if (event.which === 13) {
+                validarYEntrar();
+            }
+        });
+
+        function validarYEntrar() {
+            vacios = validarFormVacio('frmLogin');
+
+            if (vacios > 0) {
+                alert("Debes llenar todos los campos!!");
+                return false;
+            }
+
+            datos = $('#frmLogin').serialize();
+            $.ajax({
+                type: "POST",
+                data: datos,
+                url: "procesos/regLogin/login.php",
+                success: function (r) {
+                    if (r == 1) {
+                        window.location = "vistas/inicio.php";
+                    } else {
+                        alert("No se pudo acceder ");
+                    }
+                }
+            });
+        }
+    });
+</script>

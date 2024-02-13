@@ -20,14 +20,15 @@
  ?>
 
 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
-	<caption><label>Articulos</label></caption>
+	<caption><label>Productos</label></caption>
 	<tr>
+		<td>Categoria</td>
 		<td>Nombre</td>
 		<td>Descripcion</td>
 		<td>Cantidad</td>
 		<td>Precio</td>
 		<td>Imagen</td>
-		<td>Categoria</td>
+		
 		<td>Editar</td>
 		<td>Eliminar</td>
 	</tr>
@@ -35,6 +36,7 @@
 	<?php while($ver=mysqli_fetch_row($result)): ?>
 
 	<tr>
+		<td><?php echo $ver[5]; ?></td>
 		<td><?php echo $ver[0]; ?></td>
 		<td><?php echo $ver[1]; ?></td>
 		<td><?php echo $ver[2]; ?></td>
@@ -46,7 +48,7 @@
 			?>
 			<img width="80" height="80" src="<?php echo $imgruta ?>">
 		</td>
-		<td><?php echo $ver[5]; ?></td>
+		
 		<td>
 			<span  data-toggle="modal" data-target="#abremodalUpdateArticulo" class="btn btn-warning btn-xs" onclick="agregaDatosArticulo('<?php echo $ver[6] ?>')">
 				<span class="glyphicon glyphicon-pencil"></span>

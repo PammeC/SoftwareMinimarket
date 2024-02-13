@@ -9,7 +9,7 @@ if(isset($_SESSION['usuario'])){
 	<html>
 	<head>
 		<title>articulos</title>
-		<?php require_once "menu.php"; ?>
+		
 		<?php require_once "../clases/Conexion.php"; 
 		$c= new conectar();
 		$conexion=$c->conexion();
@@ -20,7 +20,7 @@ if(isset($_SESSION['usuario'])){
 	</head>
 	<body>
 		<div class="container">
-			<h1>Articulos</h1>
+			<h1>Productos</h1>
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmArticulos" enctype="multipart/form-data">
@@ -127,9 +127,9 @@ if(isset($_SESSION['usuario'])){
 					success:function(r){
 						if(r==1){
 							$('#tablaArticulosLoad').load("articulos/tablaArticulos.php");
-							alertify.success("Eliminado con exito!!");
+							alertify.success("Eliminado con exito!");
 						}else{
-							alertify.error("No se pudo eliminar ");
+							alertify.error("No se pudo eliminar!");
 						}
 					}
 				});
@@ -151,9 +151,9 @@ if(isset($_SESSION['usuario'])){
 					success:function(r){
 						if(r==1){
 							$('#tablaArticulosLoad').load("articulos/tablaArticulos.php");
-							alertify.success("Actualizado con exito");
+							alertify.success("Actualizado con exito!");
 						}else{
-							alertify.error("Error al actualizar");
+							alertify.error("Error al actualizar!");
 						}
 					}
 				});
@@ -170,7 +170,7 @@ if(isset($_SESSION['usuario'])){
 				vacios=validarFormVacio('frmArticulos');
 
 				if(vacios > 0){
-					alertify.alert("Debes llenar todos los campos!!");
+					alertify.alert("Debes llenar todos los campos!");
 					return false;
 				}
 
@@ -190,9 +190,9 @@ if(isset($_SESSION['usuario'])){
 						if(r == 1){
 							$('#frmArticulos')[0].reset();
 							$('#tablaArticulosLoad').load("articulos/tablaArticulos.php");
-							alertify.success("Agregado con exito");
+							alertify.success("Agregado con exito!");
 						}else{
-							alertify.error("Fallo al subir el archivo");
+							alertify.error("Fallo al subir el archivo!");
 						}
 					}
 				});
