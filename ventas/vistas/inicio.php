@@ -11,8 +11,7 @@
 	<?php require_once "menu.php"; ?>
 </head>
 <body>
-
-
+	<?php require_once "body.php"; ?>
 </body>
 </html>
 <?php 
