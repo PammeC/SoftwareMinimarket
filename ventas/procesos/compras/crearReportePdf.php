@@ -18,7 +18,7 @@ function file_get_contents_curl($url) {
     return $data;
 }
 
- $html=file_get_contents("http://localhost/SoftwareMinimarket%20V7/vistas/compras/rerpoteCompraPdf.php?idcompra=".$id);
+ $html=file_get_contents("http://localhost/SoftwareMinimarket/ventas/vistas/compras/rerpoteCompraPdf.php?idcompra=".$id);
 
 
  
