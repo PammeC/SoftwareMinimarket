@@ -21,7 +21,10 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 						<label>Usuario</label>
 						<input type="text" class="form-control input-sm" name="usuario" id="usuario">
 						<label>Password</label>
-						<input type="text" class="form-control input-sm" name="password" id="password">
+						<input type="password" class="form-control input-sm" name="password" id="password">
+						<label>Confirmar Contraseña</label>
+						<input type="password" class="form-control input-sm" name="confirmar_password" id="confirmar_password">
+
 						<p></p>
 						<span class="btn btn-primary" id="registro">Registrar</span>
 
@@ -143,6 +146,16 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 
 				if(vacios > 0){
 					alertify.alert("Debes llenar todos los campos!!");
+					return false;
+				}
+
+				// Obtén los valores de las contraseñas
+				var password = $('#password').val();
+				var confirmar_password = $('#confirmar_password').val();
+
+				// Verifica si las contraseñas coinciden
+				if (password !== confirmar_password) {
+					alert("Las contraseñas no coinciden. Por favor, verifica.");
 					return false;
 				}
 
