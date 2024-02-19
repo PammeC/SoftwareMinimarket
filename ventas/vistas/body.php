@@ -211,27 +211,27 @@
     <div class="container">
         <div class="row">
         <div class="col-md-4">
-            <h3>MICRO GUSTITCO</h3>
+        <h3>Horarios de atención</h3>
             <ul>
-            <li><a href="#">Trabaje con Nosotros</a></li>
-            <li><a href="#">Facturación Electrónica</a></li>
-            <li><a href="#">Derechos sobre datos personales</a></li>
+            <li><a href="#">Lunes a Viernes: 9:00 am - 9:00 pm</a></li>
+            <li><a href="#">Sábados: 9:00 am - 8:00 pm</a></li>
+            <li><a href="#">Domingos: 10:00 am - 6:00 pm</a></li>
             </ul>
         </div>
         <div class="col-md-4">
-            <h3>LA EMPRESA</h3>
+            <h3>Dirección y Contacto</h3>
             <ul>
-            <li><a href="#">Acerca de Supermaxi</a></li>
-            <li><a href="#">Responsabilidad Social</a></li>
-            <li><a href="#">Convenio de afiliación</a></li>
+            <li><a href="#">Dirección: Calle Principal Av.Gasca</a></li>
+            <li><a href="#">Teléfono: (02) 456-7890</a></li>
+            <li><a href="#">Correo electrónico: microgustico@gmail.com</a></li>
             </ul>
         </div>
         <div class="col-md-4">
-            <h3>INFORMACIÓN DE INTERÉS</h3>
+            <h3>Redes Sociales</h3>
             <ul>
-            <li><a href="#">Términos y Condiciones</a></li>
-            <li><a href="#">Políticas de privacidad</a></li>
-            <li><a href="#">Preguntas Frecuentes</a></li>
+            <li><a href="#">Facebook: Micro Gustico</a></li>
+            <li><a href="#">Twitter: Micro_Gustico </a></li>
+            <li><a href="#">Instagram: Micro_Gustico</a></li>
             </ul>
         </div>
         </div>
