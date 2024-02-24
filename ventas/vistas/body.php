@@ -238,7 +238,7 @@
         <hr>
         <div class="row">
         <div class="col-md-12">
-            <p class="text-center">Copyright &copy; 2024 - MICRO GUSTITCO</p>
+            <p class="text-center">Copyright &copy; 2024 - MICRO GUSTICO</p>
         </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ if(isset($_SESSION['usuario'])){
 
 	?>
 
-
+	
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -14,9 +14,18 @@ if(isset($_SESSION['usuario'])){
 	<body>
 		<div class="container">
 			<h1>Clientes</h1>
-			<div class="row">
+			
+			<div class="row">		
 				<div class="col-sm-4">
 					<form id="frmClientes">
+						<label>Buscar Cliente</label>			
+						<input type="text" class="form-control" id="buscarCedula" placeholder="Número de cédula">
+						<p></p>
+						<span class="btn btn-primary" id="btnBuscarCliente">Buscar</button></span>
+						<span class="btn btn-primary" id="btnMostrarCliente">Mostrar Todos</button></span>
+						<p></p>
+						<label>Registrar un Nuevo Cliente</label>
+						<p></p>	
 						<label>Nombre</label>
 						<input type="text" class="form-control input-sm" id="nombre" name="nombre">
 						<label>Apellido</label>
@@ -65,18 +74,15 @@ if(isset($_SESSION['usuario'])){
 							<label>Email</label>
 							<input type="text" class="form-control input-sm" id="emailU" name="emailU">
 							<label>Telefono</label>
-							<input type="text" class="form-control input-sm" id="telefonoU" name="telefonoU">
-							
+							<input type="text" class="form-control input-sm" id="telefonoU" name="telefonoU">							
 						</form>
 					</div>
 					<div class="modal-footer">
 						<button id="btnAgregarClienteU" type="button" class="btn btn-primary" data-dismiss="modal">Actualizar</button>
-
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</body>
 	</html>
 
@@ -95,9 +101,7 @@ if(isset($_SESSION['usuario'])){
 					$('#cedulaU').val(dato['cedula']);
 					$('#direccionU').val(dato['direccion']);
 					$('#emailU').val(dato['email']);
-					$('#telefonoU').val(dato['telefono']);
-					
-
+					$('#telefonoU').val(dato['telefono']);				
 				}
 			});
 		}
@@ -125,26 +129,26 @@ if(isset($_SESSION['usuario'])){
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-
+			
 			$('#tablaClientesLoad').load("clientes/tablaClientes.php");
-
+			
 			$('#btnAgregarCliente').click(function(){
-
+				
 				vacios=validarFormVacio('frmClientes');
-
+				
 				if(vacios > 0){
 					alertify.alert("Debes llenar todos los campos!");
 					return false;
 				}
-
+				
 				datos=$('#frmClientes').serialize();
-
+				
 				$.ajax({
 					type:"POST",
 					data:datos,
 					url:"../procesos/clientes/agregaCliente.php",
 					success:function(r){
-
+						
 						if(r==1){
 							$('#frmClientes')[0].reset();
 							$('#tablaClientesLoad').load("clientes/tablaClientes.php");
@@ -161,16 +165,13 @@ if(isset($_SESSION['usuario'])){
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#btnAgregarClienteU').click(function(){
-				datos=$('#frmClientesU').serialize();
-			
-
+				datos=$('#frmClientesU').serialize();		
+				
 				$.ajax({
 					type:"POST",
 					data:datos,
 					url:"../procesos/clientes/actualizaCliente.php",
 					success:function(r){
-
-
 						if(r==1){
 							$('#frmClientes')[0].reset();
 							$('#tablaClientesLoad').load("clientes/tablaClientes.php");
@@ -183,6 +184,39 @@ if(isset($_SESSION['usuario'])){
 			})
 		})
 	</script>
+
+<script type="text/javascript">
+
+	$('#btnMostrarCliente').click(function(){
+			// Recargar la tabla con todos los clientes
+			$('#tablaClientesLoad').load("clientes/tablaClientes.php");
+			// Limpiar el campo de búsqueda
+			$('#buscarCedula').val("");
+    });
+
+	// Nueva función para buscar cliente por cédula
+    $('#btnBuscarCliente').click(function(){
+        var cedula = $('#buscarCedula').val();
+
+        if (cedula !== "") {
+            $.ajax({
+                type: "POST",
+                data: { cedula: cedula },
+                url: "../procesos/clientes/buscarCliente.php",
+                success: function(r){
+                    if (r !== "0") {
+                        // Mostrar los resultados de la búsqueda, por ejemplo, en una tabla
+                        $('#tablaClientesLoad').html(r);
+                    } else {
+                        alertify.warning("Cliente no encontrado");
+                    }
+                }
+            });
+        } else {
+            alertify.warning("Por favor, ingresa un número de cédula correcto");
+        }
+    });
+</script>
 
 
 	<?php 

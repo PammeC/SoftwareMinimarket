@@ -17,7 +17,15 @@ if(isset($_SESSION['usuario'])){
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmProveedores">
-					<label>Nombre Empresa</label>
+						<label>Buscar Proveedor</label>			
+						<input type="text" class="form-control" id="buscarNombre_Empresa" placeholder="Nombre de la empresa">
+						<p></p>
+						<span class="btn btn-primary" id="btnBuscarProveedor">Buscar</button></span>
+						<span class="btn btn-primary" id="btnMostrarProveedor">Mostrar Todos</button></span>
+						<p></p>
+						<label>Registrar un Nuevo Proveedor</label>
+						<p></p>	
+						<label>Nombre Empresa</label>
 						<input type="text" class="form-control input-sm" id="nombre_empresa" name="nombre_empresa">
 						<label>Direccion Empresa</label>
 						<input type="text" class="form-control input-sm" id="direccion_empresa" name="direccion_empresa">
@@ -168,6 +176,41 @@ if(isset($_SESSION['usuario'])){
 			})
 		})
 	</script>
+
+<script type="text/javascript">
+
+$('#btnMostrarProveedor').click(function(){
+		// Recargar la tabla con todos los Proveedores
+		$('#tablaProveedoresLoad').load("proveedores/tablaProveedores.php");
+		// Limpiar el campo de búsqueda
+		$('#buscarNombre_Empresa').val("");
+});
+
+// Nueva función para buscar proveedor por el nombre de la empresa
+$(document).ready(function(){
+    $('#btnBuscarProveedor').click(function(){
+        var Nombre_Empresa = $('#buscarNombre_Empresa').val();
+
+        if (Nombre_Empresa !== "") {
+            $.ajax({
+                type: "POST",
+                data: { Nombre_Empresa: Nombre_Empresa },
+                url: "../procesos/proveedores/buscarProveedor.php",
+                success: function(response){
+                    if (response !== "0") {
+                        $('#tablaProveedoresLoad').html(response); // Mostrar la tabla de resultados
+                    } else {
+                        alertify.warning("Proveedor no encontrado");
+                    }
+                }
+            });
+        } else {
+            alertify.warning("Por favor, ingresa un Nombre de Empresa correcto");
+        }
+    });
+});
+
+</script>
 
 
 	<?php 

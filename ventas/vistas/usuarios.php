@@ -14,6 +14,14 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmRegistro">
+						<label>Buscar Usuario</label>			
+						<input type="text" class="form-control" id="buscarEmail" placeholder="Email">
+						<p></p>
+						<span class="btn btn-primary" id="btnBuscarUsuario">Buscar</button></span>
+						<span class="btn btn-primary" id="btnMostrarUsuario">Mostrar Todos</button></span>
+						<p></p>
+						<label>Registrar un Nuevo Usuario</label>
+						<p></p>	
 						<label>Nombre</label>
 						<input type="text" class="form-control input-sm" name="nombre" id="nombre">
 						<label>Apellido</label>
@@ -179,6 +187,40 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 			});
 		});
 	</script>
+<script type="text/javascript">
+
+$('#btnMostrarUsuario').click(function(){
+		// Recargar la tabla con todos los Usuarios
+		$('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
+		// Limpiar el campo de búsqueda
+		$('#buscarEmail').val("");
+});
+
+// Nueva función para buscar usuarios por el email
+$(document).ready(function(){
+    $('#btnBuscarUsuario').click(function(){
+        var Email = $('#buscarEmail').val();
+
+        if (Email !== "") {
+            $.ajax({
+                type: "POST",
+                data: { Email: Email },
+                url: "../procesos/usuarios/buscarUsuario.php",
+                success: function(response){
+                    if (response !== "0") {
+                        $('#tablaUsuariosLoad').html(response); // Mostrar la tabla de resultados
+                    } else {
+                        alertify.warning("Usuario no encontrado");
+                    }
+                }
+            });
+        } else {
+            alertify.warning("Por favor, ingresa un Nombre de Usuario correcto");
+        }
+    });
+});
+
+</script>
 
 	<?php 
 }else{
