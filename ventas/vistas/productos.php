@@ -21,6 +21,16 @@ if(isset($_SESSION['usuario'])){
 				<div class="row">
 					<div class="col-sm-4">												
 						<form id="frmArticulos" enctype="multipart/form-data">
+							
+							<label>Buscar Producto</label>			
+							<input type="text" class="form-control" id="buscarProducto" placeholder="Nombre del producto">
+							<p></p>
+							<span class="btn btn-primary" id="btnBuscarProducto">Buscar</button></span>
+							<span class="btn btn-primary" id="btnMostrarProducto">Mostrar Todos</button></span>
+							<p></p>
+
+							<label>Registrar un Nuevo Producto</label>
+
 							<label>Categoria</label>
 							<select class="form-control input-sm" id="categoriaSelect" name="categoriaSelect">
 								<option value="A">Selecciona Categoria</option>
@@ -43,7 +53,7 @@ if(isset($_SESSION['usuario'])){
 						</form>
 					</div>					
 					<div class="col-sm-8">
-					<span id="btnOrdenarCategoria" class="btn btn-primary">Ordenar por Categoria</span>
+						<span id="btnOrdenarCategoria" class="btn btn-primary">Ordenar por Categoria</span>
 						<div id="tablaArticulosLoad"></div>
 					</div>
 				</div>
@@ -195,26 +205,58 @@ if(isset($_SESSION['usuario'])){
 		});
 	</script>
 	<script>
-    $(document).ready(function() {
-        // Manejar clic en el botón de ordenar por categoría
-        $('#btnOrdenarCategoria').click(function() {
-            // Realizar la solicitud AJAX para obtener los productos ordenados por categoría
-            $.ajax({
-                type: 'GET',
-                url: '../procesos/articulos/ordenarPorCategorias.php',
-                success: function(response) {
-                    // Actualizar la tabla con los productos ordenados
-                    $('#tablaArticulosLoad').html(response);
-                },
-                error: function(error) {
-                    console.error('Error al ordenar por categoría: ', error);
-                }
-            });
-        });
-    });
-</script>
+		$(document).ready(function() {
+			// Manejar clic en el botón de ordenar por categoría
+			$('#btnOrdenarCategoria').click(function() {
+				// Realizar la solicitud AJAX para obtener los productos ordenados por categoría
+				$.ajax({
+					type: 'GET',
+					url: '../procesos/articulos/ordenarPorCategorias.php',
+					success: function(response) {
+						// Actualizar la tabla con los productos ordenados
+						$('#tablaArticulosLoad').html(response);
+					},
+					error: function(error) {
+						console.error('Error al ordenar por categoría: ', error);
+					}
+				});
+			});
+		});
+	</script>
 
-	<?php 
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btnBuscarProducto').click(function(){
+				var nombreProducto = $('#buscarProducto').val();
+				buscarProducto(nombreProducto);
+			});
+			$('#btnMostrarProducto').click(function(){
+				mostrarTodosProductos();
+			});
+
+			function buscarProducto(nombreProducto){
+				$.ajax({
+					type:"POST",
+					data: { nombre: nombreProducto },
+					url:"../procesos/articulos/buscarArticulo.php",
+					success:function(data){
+						$('#tablaArticulosLoad').html(data);
+					}
+				});
+			}
+
+			function mostrarTodosProductos(){
+				$.ajax({
+					url:"articulos/tablaArticulos.php",
+					success:function(data){
+						$('#tablaArticulosLoad').html(data);
+					}
+				});
+			}
+		});
+	</script>
+
+<?php 
 }else{
 	header("location:../index.php");
 }
