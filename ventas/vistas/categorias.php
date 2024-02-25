@@ -179,7 +179,7 @@ if(isset($_SESSION['usuario'])){
 
 			function mostrarTodosCategorias(){
 				$.ajax({
-					url:"categoria/tablaCategorias.php",
+					url:"categorias/tablaCategorias.php",
 					success:function(data){
 						$('#tablaCategoriaLoad').html(data);
 					}
