@@ -26,13 +26,16 @@ class ventas{
 
 		// Aumentar el precio en un 10%
 		$precio_aumentado = $ver[4] * 1.10;
-
+		
+		// Formatear el precio con solo dos decimales
+		$precio_formateado = number_format($precio_aumentado, 2);
+		
 		$data=array(
 			'nombre' => $ver[0],
 			'descripcion' => $ver[1],
 			'cantidad' => $ver[2],
 			'ruta' => $img,
-			'precio' => $precio_aumentado // Usar el precio aumentado
+			'precio' => $precio_formateado // Usar el precio formateado
 		);		
 		return $data;
 	}
