@@ -189,12 +189,12 @@ $('#btnMostrarProveedor').click(function(){
 // Nueva función para buscar proveedor por el nombre de la empresa
 $(document).ready(function(){
     $('#btnBuscarProveedor').click(function(){
-        var Nombre_Empresa = $('#buscarNombre_Empresa').val();
+        var nombre_empresa = $('#buscarNombre_Empresa').val();
 
-        if (Nombre_Empresa !== "") {
+        if (nombre_empresa !== "") {
             $.ajax({
                 type: "POST",
-                data: { Nombre_Empresa: Nombre_Empresa },
+                data: { nombre_empresa: nombre_empresa },
                 url: "proveedores/tablaProveedores.php",
                 success: function(response){
                     if (response !== "0") {

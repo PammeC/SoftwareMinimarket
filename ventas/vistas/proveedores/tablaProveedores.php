@@ -57,6 +57,7 @@
 						telefono_empresa
 				FROM proveedores
 				WHERE nombre_empresa LIKE '%$nombre_empresa%'";
+		ejecutarConsulta($conexion, $sql);
 	} else {
 
 		$sql="SELECT id_proveedor, 
