@@ -24,12 +24,15 @@ class ventas{
 
 		$img=$d[1].'/'.$d[2].'/'.$d[3];
 
+		// Aumentar el precio en un 10%
+		$precio_aumentado = $ver[4] * 1.10;
+
 		$data=array(
 			'nombre' => $ver[0],
 			'descripcion' => $ver[1],
 			'cantidad' => $ver[2],
 			'ruta' => $img,
-			'precio' => $ver[4]
+			'precio' => $precio_aumentado // Usar el precio aumentado
 		);		
 		return $data;
 	}
