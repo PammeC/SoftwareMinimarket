@@ -163,26 +163,26 @@
             </td>
             <td>
                 <a href="#" class="tabla-imagenes">
-                    <img src="../img/congelados.png" alt="Helados">
+                    <img src="../img/congelados.png" alt="Congelados">
                     <br>
-                    Helados
+                    Congelados
                 </a><br>
                 <a href="#" class="tabla-imagenes">
-                    <img src="../img/Panificados 2.png" alt="Pizzas y Empanadas">
+                    <img src="../img/Panificados 2.png" alt="Panificados">
                     <br>
-                    Pizzas y Empanadas
+                    Panificados y Repostería 
                 </a>
             </td>
             <td>
                 <a href="#" class="tabla-imagenes">
-                    <img src="../img/Cosmetica 2.png" alt="Maquillaje">
+                    <img src="../img/Cosmetica 2.png" alt="Cosmetica">
                     <br>
-                    Maquillaje
+                    Cosméticos y Belleza
                 </a><br>
                 <a href="#" class="tabla-imagenes">
-                    <img src="../img/confiteria.png" alt="Cuidado de la Piel">
+                    <img src="../img/confiteria.png" alt="Confiteria">
                     <br>
-                    Cuidado de la Piel
+                    Confitería
                 </a>
             </td>
         </tr>

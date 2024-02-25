@@ -28,7 +28,7 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
-					<div class="panel panel-heading">MicroGustico</div>
+				<div class="panel panel-heading text-center">MICRO GUSTICO</div>
 					<div class="panel panel-body">
 						<p>
 							<img src="img/logo.png"  height="190">

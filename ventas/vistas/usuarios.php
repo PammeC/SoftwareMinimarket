@@ -15,7 +15,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 				<div class="col-sm-4">
 					<form id="frmRegistro">
 						<label>Buscar Usuario</label>			
-						<input type="text" class="form-control" id="buscarEmail" placeholder="Email">
+						<input type="text" class="form-control" id="buscarEmail" placeholder="Usuario">
 						<p></p>
 						<span class="btn btn-primary" id="btnBuscarUsuario">Buscar</button></span>
 						<span class="btn btn-primary" id="btnMostrarUsuario">Mostrar Todos</button></span>
