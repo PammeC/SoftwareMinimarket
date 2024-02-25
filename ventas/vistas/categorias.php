@@ -1,16 +1,11 @@
 <?php 
 session_start();
 if(isset($_SESSION['usuario'])){
-
-	?>
-
+?>
 
 	<!DOCTYPE html>
 	<html>
 	<head>
-	<p></p>
-	<p></p>
-	<p></p>
 		<title>categorias</title>
 		<?php require_once "menu.php"; ?>
 	</head>
@@ -21,10 +16,21 @@ if(isset($_SESSION['usuario'])){
 			<div class="row">
 				<div class="col-sm-4">
 					<form id="frmCategorias">
-						<label>Categoria</label>
+						<label>Buscar Categoria</label>			
+						<input type="text" class="form-control" id="buscarCategoria" placeholder="Nombre de Categoria">
+						<p></p>
+						<span class="btn btn-primary" id="btnBuscarCategoria">Buscar</button></span>
+						<span class="btn btn-primary" id="btnMostrarCategoria">Mostrar Todos</button></span>
+						<p></p>
+
+						<label>Registrar una Nueva Categoria</label>
 						<input type="text" class="form-control input-sm" name="categoria" id="categoria">
 						<p></p>
 						<span class="btn btn-primary" id="btnAgregaCategoria">Agregar</span>
+						<p></p>
+
+						
+
 					</form>
 				</div>
 				<div class="col-sm-6">
@@ -145,6 +151,45 @@ if(isset($_SESSION['usuario'])){
 			});
 		}
 	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btnBuscarCategoria').click(function(){
+				var nombreCategoria = $('#buscarCategoria').val();
+				buscarCategoria(nombreCategoria);
+			});
+			$('#btnMostrarCategoria').click(function(){
+				mostrarTodosCategorias();
+			});
+
+			function buscarCategoria(nombreCategoria){
+				if (nombreCategoria !== "") {
+				$.ajax({
+					type:"POST",
+					data: { nombre: nombreCategoria },
+					url:"categorias/tablaCategorias.php",
+					success:function(data){
+						$('#tablaCategoriaLoad').html(data);
+					}
+				});
+				} else {				
+					alertify.warning("Por favor, ingresa un Nombre de Categoria correcto");
+				}
+			}
+
+			function mostrarTodosCategorias(){
+				$.ajax({
+					url:"categoria/tablaCategorias.php",
+					success:function(data){
+						$('#tablaCategoriaLoad').html(data);
+					}
+				});
+			}
+		});
+	</script>
+
+
+
 	<?php 
 }else{
 	header("location:../index.php");

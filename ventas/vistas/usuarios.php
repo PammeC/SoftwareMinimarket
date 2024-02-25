@@ -205,7 +205,7 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 data: { Email: Email },
-                url: "../procesos/usuarios/buscarUsuario.php",
+                url: "usuarios/tablaUsuarios.php",
                 success: function(response){
                     if (response !== "0") {
                         $('#tablaUsuariosLoad').html(response); // Mostrar la tabla de resultados

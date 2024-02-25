@@ -202,7 +202,7 @@ if(isset($_SESSION['usuario'])){
             $.ajax({
                 type: "POST",
                 data: { cedula: cedula },
-                url: "../procesos/clientes/buscarCliente.php",
+                url: "clientes/tablaClientes.php",
                 success: function(r){
                     if (r !== "0") {
                         // Mostrar los resultados de la búsqueda, por ejemplo, en una tabla

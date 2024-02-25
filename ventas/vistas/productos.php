@@ -30,6 +30,7 @@ if(isset($_SESSION['usuario'])){
 							<p></p>
 
 							<label>Registrar un Nuevo Producto</label>
+							<p></p>
 
 							<label>Categoria</label>
 							<select class="form-control input-sm" id="categoriaSelect" name="categoriaSelect">
@@ -235,14 +236,18 @@ if(isset($_SESSION['usuario'])){
 			});
 
 			function buscarProducto(nombreProducto){
-				$.ajax({
-					type:"POST",
-					data: { nombre: nombreProducto },
-					url:"../procesos/articulos/buscarArticulo.php",
-					success:function(data){
-						$('#tablaArticulosLoad').html(data);
-					}
-				});
+				if (nombreProducto !== "") {
+					$.ajax({
+						type:"POST",
+						data: { nombre: nombreProducto },
+						url:"articulos/tablaArticulos.php",
+						success:function(data){
+							$('#tablaArticulosLoad').html(data);
+						}
+					});
+				} else {				
+					alertify.warning("Por favor, ingresa un Nombre de Producto correcto");
+				}
 			}
 
 			function mostrarTodosProductos(){

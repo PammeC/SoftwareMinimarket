@@ -195,7 +195,7 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 data: { Nombre_Empresa: Nombre_Empresa },
-                url: "../procesos/proveedores/buscarProveedor.php",
+                url: "proveedores/tablaProveedores.php",
                 success: function(response){
                     if (response !== "0") {
                         $('#tablaProveedoresLoad').html(response); // Mostrar la tabla de resultados
