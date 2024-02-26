@@ -4,6 +4,34 @@ require_once "../../clases/Conexion.php";
 $c = new conectar();
 $conexion = $c->conexion();
 
+// Función para obtener el número total de registros
+function obtenerTotalRegistros($conexion)
+{
+    $totalRegistrosConsulta = mysqli_query($conexion, "SELECT COUNT(*) as total FROM articulos")->fetch_assoc();
+    return $totalRegistrosConsulta['total'];
+}
+
+// Función para mostrar la paginación
+function mostrarPaginacion($actual, $paginas)
+{
+    echo '<ul class="pagination">';
+    for ($i = 1; $i <= $paginas; $i++) {
+        if ($i == $actual) {
+            echo '<li class="active"><span>' . $i . '</span></li>';
+        } else {
+            echo '<li><a href="articulos/tablaArticulos.php?pagina=' . $i . '">' . $i . '</a></li>';
+        }
+    }
+    echo '</ul>';
+}
+
+// Determinar la página actual
+$paginaActual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+// Calcular el índice de inicio para la consulta SQL
+$registrosPorPagina = 5;
+$indiceInicio = ($paginaActual - 1) * $registrosPorPagina;
+
 // Función para ejecutar la consulta y mostrar la tabla
 function ejecutarConsulta($conexion, $sql)
 {
@@ -77,18 +105,24 @@ if (isset($_POST['nombre'])) {
 
     ejecutarConsulta($conexion, $sql);
 } else {
-    // Si no se envió el formulario, simplemente mostrar todos los productos
+    // Consulta SQL para obtener los registros de la página actual
     $sql = "SELECT art.nombre,
-                    art.descripcion,
-                    art.cantidad,
-                    art.precio,
-                    img.ruta,
-                    cat.nombreCategoria,
-                    art.id_producto
-          FROM articulos AS art 
-          INNER JOIN imagenes AS img ON art.id_imagen = img.id_imagen
-          INNER JOIN categorias AS cat ON art.id_categoria = cat.id_categoria";
+               art.descripcion,
+               art.cantidad,
+               art.precio,
+               img.ruta,
+               cat.nombreCategoria,
+               art.id_producto
+        FROM articulos AS art 
+        INNER JOIN imagenes AS img ON art.id_imagen = img.id_imagen
+        INNER JOIN categorias AS cat ON art.id_categoria = cat.id_categoria
+        LIMIT $indiceInicio, $registrosPorPagina";
 
     ejecutarConsulta($conexion, $sql);
+
+    // Mostrar la paginación, botones en la parte inferior de la tabla 
+    $totalRegistros = obtenerTotalRegistros($conexion);
+    $totalPaginas = ceil($totalRegistros / $registrosPorPagina);
+    mostrarPaginacion($paginaActual, $totalPaginas);
 }
 ?>
