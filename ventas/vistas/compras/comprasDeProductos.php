@@ -18,9 +18,19 @@ $conexion=$c->conexion();
 				from proveedores";
 				$result=mysqli_query($conexion,$sql);
 				while ($proveedores=mysqli_fetch_row($result)):
-                ?>
-				
+                ?>				
                 <option value="<?php echo $proveedores[0] ?>"><?php echo $proveedores[1]?></option>
+				<?php endwhile; ?>
+			</select>
+			<label>Categoría</label>
+			<select class="form-control input-sm" id="categoriaCompra" name="categoriaCompra">
+				<option value="A">Selecciona</option>
+				<?php
+				$sql = "SELECT id_categoria, nombreCategoria FROM categorias";
+				$result = mysqli_query($conexion, $sql);
+				while ($categoria = mysqli_fetch_row($result)):
+				?>
+					<option value="<?php echo $categoria[0] ?>"><?php echo $categoria[1]?></option>
 				<?php endwhile; ?>
 			</select>
 			<label>Producto</label>
@@ -79,6 +89,19 @@ $conexion=$c->conexion();
 				}
 			});
 		});
+
+		$('#categoriaCompra').change(function(){
+            var categoriaSeleccionada = $(this).val();
+            $.ajax({
+                type: "POST",
+                data: "idCategoria=" + categoriaSeleccionada,
+                url: "../procesos/categorias/obtenerProductosPorCategoria.php",
+                success: function(data){
+
+					$('#productoCompra').empty().append('<option value="A">Selecciona</option>' + data);
+                }
+            });
+        });
 
 		$('#btnAgregaCompra').click(function(){
 			vacios=validarFormVacio('frmComprasProductos');
@@ -155,6 +178,7 @@ function crearCompra() {
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#proveedorCompra').select2();
+		$('#categoriaCompra').select2();
 		$('#productoCompra').select2();
 
 	});

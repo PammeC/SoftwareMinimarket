@@ -22,6 +22,17 @@ $conexion=$c->conexion();
 				<option value="<?php echo $cliente[0] ?>"><?php echo $cliente[2]." ".$cliente[1] ?></option>
 				<?php endwhile; ?>
 			</select>
+			<label>Categoría</label>
+			<select class="form-control input-sm" id="categoriaVenta" name="categoriaVenta">
+				<option value="A">Selecciona</option>
+				<?php
+				$sql = "SELECT id_categoria, nombreCategoria FROM categorias";
+				$result = mysqli_query($conexion, $sql);
+				while ($categoria = mysqli_fetch_row($result)):
+				?>
+					<option value="<?php echo $categoria[0] ?>"><?php echo $categoria[1]?></option>
+				<?php endwhile; ?>
+			</select>
 			<label>Producto</label>
 			<select class="form-control input-sm" id="productoVenta" name="productoVenta">
 				<option value="A">Selecciona</option>
@@ -76,6 +87,20 @@ $conexion=$c->conexion();
 				}
 			});
 		});
+
+		$('#categoriaVenta').change(function(){
+            var categoriaSeleccionada = $(this).val();
+            $.ajax({
+                type: "POST",
+                data: "idCategoria=" + categoriaSeleccionada,
+                url: "../procesos/categorias/obtenerProductosPorCategoria.php",
+                success: function(data){
+
+					$('#productoVenta').empty().append('<option value="A">Selecciona</option>' + data);
+                }
+            });
+        });
+
 
 		$('#btnAgregaVenta').click(function(){
 			vacios=validarFormVacio('frmVentasProductos');
@@ -162,6 +187,7 @@ $conexion=$c->conexion();
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#clienteVenta').select2();
+		$('#categoriaVenta').select2();
 		$('#productoVenta').select2();
 
 	});

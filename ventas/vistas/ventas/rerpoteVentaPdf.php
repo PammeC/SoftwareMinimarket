@@ -117,10 +117,11 @@ $result=mysqli_query($conexion,$sql);
  
             $result=mysqli_query($conexion,$sql);
             $total=0;
-            $precio_aumentado = $ver[4] * 1.10;
-            $precio_formateado = number_format($precio_aumentado, 2);
+            
  
             while($ver=mysqli_fetch_row($result)):
+                $precio_aumentado = $ver[4] * 1.10;
+            $precio_formateado = number_format($precio_aumentado, 2);
                
              ?>
                 <tr>
@@ -130,7 +131,7 @@ $result=mysqli_query($conexion,$sql);
                 <td><?php echo $ver[5]; ?></td>
             </tr>
             <?php
-                 $total=$total + $precio_formateado ;
+                 $total=$total + $precio_formateado;
             endwhile;
              ?>
              <tr>
