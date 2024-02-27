@@ -133,6 +133,37 @@ if(isset($_SESSION['usuario'])){
 			$('#tablaClientesLoad').load("clientes/tablaClientes.php");
 			
 			$('#btnAgregarCliente').click(function(){
+				try {
+					// Validar que nombre y apellido no contengan números
+					var nombre = $('#nombre').val();
+					var apellido = $('#apellidos').val();
+					if (/\d/.test(nombre) || /\d/.test(apellido)) {
+						throw "El nombre y el apellido no deben contener números.";
+					}
+					
+					// Validar cédula (10 dígitos y solo números)
+					var cedula = $('#cedula').val();
+					if (cedula.length !== 10 || isNaN(cedula)) {
+						throw "La cédula debe tener 10 dígitos.";
+					}
+
+					// Validar email (debe contener @)
+					var email = $('#email').val();
+					if (!email.includes("@")) {
+						throw "El email debe contener el formato '@examp.com'.";
+					}
+
+					// Validar teléfono (10 dígitos y solo números)
+					var telefono = $('#telefono').val();
+					if (telefono.length !== 10 || isNaN(telefono)) {
+						throw "El teléfono debe tener 10 dígitos.";
+					}
+
+					
+					
+					// Si todas las validaciones pasan, proceder con el envío del formulario
+					var datos=$('#frmClientes').serialize();
+
 				
 				vacios=validarFormVacio('frmClientes');
 				
@@ -158,6 +189,10 @@ if(isset($_SESSION['usuario'])){
 						}
 					}
 				});
+			} catch (error) {
+					alertify.error(error);
+			}
+
 			});
 		});
 	</script>
@@ -165,6 +200,13 @@ if(isset($_SESSION['usuario'])){
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#btnAgregarClienteU').click(function(){
+				try {
+					// Validar email en el formulario de actualización
+					var emailU = $('#emailU').val();
+					if (!emailU.includes("@")) {
+						throw "El email debe contener '@'.";
+					}
+
 				datos=$('#frmClientesU').serialize();		
 				
 				$.ajax({
@@ -181,6 +223,9 @@ if(isset($_SESSION['usuario'])){
 						}
 					}
 				});
+			} catch (error) {
+					alertify.error(error);
+				}
 			})
 		})
 	</script>
