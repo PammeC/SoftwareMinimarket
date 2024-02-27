@@ -28,6 +28,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 						<input type="text" class="form-control input-sm" name="apellido" id="apellido">
 						<label>Usuario</label>
 						<input type="text" class="form-control input-sm" name="usuario" id="usuario">
+						
 						<label>Password</label>
 						<input type="password" class="form-control input-sm" name="password" id="password">
 						<label>Confirmar Contraseña</label>
@@ -167,6 +168,12 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 					return false;
 				}
 
+				// Validar la contraseña según los criterios
+				if (!validarContrasena(password)) {
+                alert("La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número.");
+                return false;
+            	}
+
 				datos=$('#frmRegistro').serialize();
 				$.ajax({
 					type:"POST",
@@ -185,6 +192,12 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 					}
 				});
 			});
+			// Función para validar la contraseña
+			function validarContrasena(contrasena) {
+            // Al menos 8 caracteres, una letra mayúscula y un número
+            var regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            return regex.test(contrasena);
+        }
 		});
 	</script>
 <script type="text/javascript">

@@ -77,6 +77,12 @@
 				return false;
       		}
 
+			// Validar la contraseña según los criterios
+			if (!validarContrasena(password)) {
+                alert("La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número.");
+                return false;
+            }
+
 			datos=$('#frmRegistro').serialize();
 			$.ajax({
 				type:"POST",
@@ -93,6 +99,12 @@
 				}
 			});
 		});
+		// Función para validar la contraseña
+		function validarContrasena(contrasena) {
+            // Al menos 8 caracteres, una letra mayúscula y un número
+            var regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            return regex.test(contrasena);
+        }
 	});
 </script>
 
