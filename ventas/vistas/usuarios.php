@@ -150,6 +150,23 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 			$('#tablaUsuariosLoad').load('usuarios/tablaUsuarios.php');
 
 			$('#registro').click(function(){
+				try {
+					 // Validar que nombre y apellido no contengan números
+					 var nombre = $('#nombre').val();
+					 var apellido = $('#apellido').val();
+					if (/\d/.test(nombre) || /\d/.test(apellido)) {
+						throw "El nombre y el apellido no deben contener números.";
+					}
+					
+					// Validar email (debe contener @)
+					var email = $('#usuario').val();
+					if (!email.includes("@")) {
+						throw "El email debe contener el formato '@examp.com'.";
+					}
+					
+					// Si todas las validaciones pasan, proceder con el envío del formulario
+					var datos=$('#frmClientes').serialize();
+
 
 				vacios=validarFormVacio('frmRegistro');
 
@@ -191,14 +208,17 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 						}
 					}
 				});
-			});
+			} catch (error) {
+					alertify.error(error);
+				}
+			})
 			// Función para validar la contraseña
 			function validarContrasena(contrasena) {
             // Al menos 8 caracteres, una letra mayúscula y un número
             var regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
             return regex.test(contrasena);
         }
-		});
+		})
 	</script>
 <script type="text/javascript">
 

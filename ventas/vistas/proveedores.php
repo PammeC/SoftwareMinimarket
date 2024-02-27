@@ -123,6 +123,22 @@ if(isset($_SESSION['usuario'])){
 			$('#tablaProveedoresLoad').load("proveedores/tablaProveedores.php");
 
 			$('#btnAgregarProveedor').click(function(){
+				try {
+					// Validar email (debe contener @)
+					var email = $('#email_empresa').val();
+					if (!email.includes("@")) {
+						throw "El email debe contener el formato '@examp.com.";
+					}
+
+					// Validar teléfono (10 dígitos y solo números)
+					var telefono = $('#telefono_empresa').val();
+					if (telefono.length !== 10 || isNaN(telefono)) {
+						throw "El teléfono debe tener 10 dígitos.";
+					}
+
+					// Resto del código de validación y envío del formulario
+					var datos=$('#frmProveedores').serialize();
+			
 
 				vacios=validarFormVacio('frmProveedores');
 
@@ -148,6 +164,9 @@ if(isset($_SESSION['usuario'])){
 						}
 					}
 				});
+			}catch (error) {
+					alertify.error(error);
+			}
 			});
 		});
 	</script>

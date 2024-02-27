@@ -40,7 +40,7 @@
 							<input type="text" class="form-control input-sm" name="usuario" id="usuario">
 							<label>Password</label>
 							<input type="password" class="form-control input-sm" name="password" id="password">
-							<label>Confirmar Contraseña</label>
+							<label>Confirmar Password</label>
 							<input type="password" class="form-control input-sm" name="confirmar_password" id="confirmar_password">
 
 							<p></p>
